@@ -72,17 +72,3 @@ void CONTROLS(){
   text("Left click to shoot arrow", 100, 250);
   text("piece of trash kid haha", 100, 150);
 }
-  rect(xButt, yButt, buttLength, buttHeight);
-  fill(0);
-  textSize(50);
-  text("PLAY", xButt + 20, yButt + 50);
-  text("CONTROLS", xButt + 10, yButt + 150);
-  rect(xButt, yButt, 
-}
-
-void mousePressed() {
-  if (mouseX > xButt && mouseX < xButt + buttLength &&
-      mouseY > yButt && mouseY < yButt + buttHeight) {
-    screen = "GAMESCREEN";
-  }
-}
