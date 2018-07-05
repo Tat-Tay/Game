@@ -1,4 +1,4 @@
-int x, y, u, hey, xButt, yButt, buttLength, buttHeight;
+int xL, yL, u, hey, xButt, yButt, buttLength, buttHeight;
 //int y = 200;
 String screen = "MENU";
 
