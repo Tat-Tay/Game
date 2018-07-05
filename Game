@@ -1,0 +1,54 @@
+int x, y, u, hey, xButt, yButt, buttLength, buttHeight;
+//int y = 200;
+String screen = "MENU";
+
+void setup() {
+  size(800, 700);
+  x = 0;
+  hey = 9;
+  xButt = width/3;
+  yButt = height/3;
+  buttLength = width/5;
+  buttHeight = height/10;
+}
+
+void draw() {
+ if (screen.equals("MENU")) {
+   menu();
+ } else if (screen.equals("GAMESCREEN")) {
+   gameScreen();
+ }
+  
+}
+
+void gameScreen() {
+ background (65, 241, 244);
+ strokeWeight(100);
+ stroke(59, 111, 214);
+ fill(240, 5, 5);
+ ellipse(x, 200, 40, 40);
+ x = x + 1;
+}
+
+void menu() {
+  background(255, 221, 0);
+  if (mouseX > xButt && mouseX < xButt + buttLength &&
+      mouseY > yButt && mouseY < yButt + buttHeight) {
+    fill(211, 118, 224);
+  } else {
+    fill(244, 168, 255);
+  }
+  rect(xButt, yButt, buttLength, buttHeight);
+  fill(0);
+  textSize(50);
+  text("PLAY", xButt + 20, yButt + 50);
+  text("CONTROLS", xButt + 10, yButt + 150);
+  rect(xButt, yButt, 
+}
+
+void mousePressed() {
+  if (mouseX > xButt && mouseX < xButt + buttLength &&
+      mouseY > yButt && mouseY < yButt + buttHeight) {
+    screen = "GAMESCREEN";
+  }
+}
