@@ -17,6 +17,8 @@ void draw() {
    menu();
  } else if (screen.equals("GAMESCREEN")) {
    gameScreen();
+ } else if (screen.equals("CONTROLS")) {
+   CONTROLS();
  }
   
 }
@@ -38,6 +40,38 @@ void menu() {
   } else {
     fill(244, 168, 255);
   }
+  rect(xButt, yButt, buttLength, buttHeight);
+  fill(0);
+  textSize(50);
+  text("PLAY", xButt + 20, yButt + 50);
+  if (mouseX > xButt && mouseX < xButt + buttLength + 120 && 
+      mouseY > yButt + 100 && mouseY < yButt + 100 + buttHeight) {
+    fill(211, 118, 224);
+  } else {
+    fill(245, 178, 255);
+  }
+  rect(xButt, yButt + 100, buttLength + 120, buttHeight);
+  fill(0);
+  text("CONTROLS", xButt + 10, yButt + 150);
+
+}
+
+void mousePressed() {
+  if (mouseX > xButt && mouseX < xButt + buttLength &&
+      mouseY > yButt && mouseY < yButt + buttHeight) {
+    screen = "GAMESCREEN";
+  } else if (mouseX > xButt && mouseX < xButt + buttLength + 120 && 
+             mouseY > yButt + 100 && mouseY < yButt + 100 + buttHeight) {
+    screen = "CONTROLS";
+  }
+}
+
+void CONTROLS(){
+  background(0, 255, 255);
+  text("CONTROLS", 100, 50);
+  text("Left click to shoot arrow", 100, 250);
+  text("piece of trash kid haha", 100, 150);
+}
   rect(xButt, yButt, buttLength, buttHeight);
   fill(0);
   textSize(50);
