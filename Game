@@ -13,6 +13,7 @@ void setup() {
   yButt = height/3;
   buttLength = width/5;
   buttHeight = height/10;
+  
 }
 
 void draw() {
@@ -48,6 +49,10 @@ void gameScreen() {
    ellipse(150, 550, 20, 20);
    text("SHOTS LEFT", 30, 500);
    textSize(25);
+   
+   if (mouseButton == LEFT) {
+     //ok erin i want to make it so that when yo uleft click the part that says "shots left" will subtract one dot
+   }
 }
 
 void menu() {
@@ -72,7 +77,8 @@ void menu() {
   fill(0);
   text("CONTROLS", xButt + 10, yButt + 150);
   text("SHARPSHOOTER", 200, 100);
-  ellipse(645, 83, 50, 50);
+  
+  
 }
 
 void mousePressed() {
