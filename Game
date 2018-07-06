@@ -71,7 +71,8 @@ void menu() {
   rect(xButt, yButt + 100, buttLength + 120, buttHeight);
   fill(0);
   text("CONTROLS", xButt + 10, yButt + 150);
-
+  text("SHARPSHOOTER", 200, 100);
+  ellipse(645, 83, 50, 50);
 }
 
 void mousePressed() {
