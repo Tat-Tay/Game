@@ -1,10 +1,13 @@
-int xL, yL, u, hey, xButt, yButt, buttLength, buttHeight;
+int  u, hey, xButt, yButt, buttLength, buttHeight;
 //int y = 200;
 String screen = "MENU";
+float xSpeed = 5;
+float ySpeed = 5;
+float x = 400;
+float y = 300;
 
 void setup() {
-  size(800, 700);
-  x = 0;
+  size(800, 600);
   hey = 9;
   xButt = width/3;
   yButt = height/3;
@@ -28,8 +31,23 @@ void gameScreen() {
  strokeWeight(100);
  stroke(59, 111, 214);
  fill(240, 5, 5);
- ellipse(x, 200, 40, 40);
- x = x + 1;
+ ellipse(x, y, 50, 50);
+ x = x + xSpeed;
+ if (x > width || x < 0) {
+ xSpeed = xSpeed * -1;}
+ 
+ 
+ y = y + ySpeed;
+ if (y > height || y < 0) {
+ ySpeed = ySpeed * -1;}
+
+   
+   noStroke();
+   ellipse(50, 550, 20, 20);
+   ellipse(100, 550, 20, 20);
+   ellipse(150, 550, 20, 20);
+   text("SHOTS LEFT", 30, 500);
+   textSize(25);
 }
 
 void menu() {
