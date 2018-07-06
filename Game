@@ -1,4 +1,4 @@
-int  u, hey, xButt, yButt, buttLength, buttHeight;
+int  u, hey, xButt, yButt, buttLength, buttHeight, timesClicked;
 //int y = 200;
 String screen = "MENU";
 float xSpeed = 5;
@@ -13,6 +13,7 @@ void setup() {
   yButt = height/3;
   buttLength = width/5;
   buttHeight = height/10;
+  timesClicked = 0;
   
 }
 
@@ -24,7 +25,8 @@ void draw() {
  } else if (screen.equals("CONTROLS")) {
    CONTROLS();
  }
-  
+ 
+ println("Clicked: " + timesClicked);
 }
 
 void gameScreen() {
@@ -44,9 +46,15 @@ void gameScreen() {
 
    
    noStroke();
+   if (timesClicked < 3) {        // ok so i made it work but the code looks kinda inefficient or bad or something idk hey but at least it works
    ellipse(50, 550, 20, 20);
+   }
+   if (timesClicked < 2) {
    ellipse(100, 550, 20, 20);
+   }
+   if (timesClicked < 1) {
    ellipse(150, 550, 20, 20);
+   }
    text("SHOTS LEFT", 30, 500);
    textSize(25);
    
@@ -82,12 +90,16 @@ void menu() {
 }
 
 void mousePressed() {
-  if (mouseX > xButt && mouseX < xButt + buttLength &&
-      mouseY > yButt && mouseY < yButt + buttHeight) {
-    screen = "GAMESCREEN";
-  } else if (mouseX > xButt && mouseX < xButt + buttLength + 120 && 
-             mouseY > yButt + 100 && mouseY < yButt + 100 + buttHeight) {
-    screen = "CONTROLS";
+  if (screen.equals("MENU")) {            // I made it so that you can only click on the buttons IF you're on the MENU screen
+    if (mouseX > xButt && mouseX < xButt + buttLength &&
+        mouseY > yButt && mouseY < yButt + buttHeight) {
+      screen = "GAMESCREEN";
+    } else if (mouseX > xButt && mouseX < xButt + buttLength + 120 && 
+               mouseY > yButt + 100 && mouseY < yButt + 100 + buttHeight) {
+      screen = "CONTROLS";
+    }
+  } else if (screen.equals("GAMESCREEN")) {   // if you're on the gamescreeen and only the gamescreen...
+    timesClicked += 1;                        // this variable stores how many times the player has clicked --> i put a println in the draw function so you can see how many times you've clicked
   }
 }
 
