@@ -1,0 +1,111 @@
+int  u, hey, xButt, yButt, buttLength, buttHeight, timesClicked;
+//int y = 200;
+String screen = "MENU";
+float xSpeed = 5;
+float ySpeed = 5;
+float x = 400;
+float y = 300;
+
+void setup() {
+  size(800, 600);
+  hey = 9;
+  xButt = width/3;
+  yButt = height/3;
+  buttLength = width/5;
+  buttHeight = height/10;
+  timesClicked = 0;
+  
+}
+
+void draw() {
+ if (screen.equals("MENU")) {
+   menu();
+ } else if (screen.equals("GAMESCREEN")) {
+   gameScreen();
+ } else if (screen.equals("CONTROLS")) {
+   CONTROLS();
+ }
+ 
+ println("Clicked: " + timesClicked);
+}
+
+void gameScreen() {
+ background (65, 241, 244);
+ strokeWeight(100);
+ stroke(59, 111, 214);
+ fill(240, 5, 5);
+ ellipse(x, y, 50, 50);
+ x = x + xSpeed;
+ if (x > width || x < 0) {
+ xSpeed = xSpeed * -1;}
+ 
+ 
+ y = y + ySpeed;
+ if (y > height || y < 0) {
+ ySpeed = ySpeed * -1;}
+
+   
+   noStroke();
+   if (timesClicked < 3) {        // ok so i made it work but the code looks kinda inefficient or bad or something idk hey but at least it works
+   ellipse(50, 550, 20, 20);
+   }
+   if (timesClicked < 2) {
+   ellipse(100, 550, 20, 20);
+   }
+   if (timesClicked < 1) {
+   ellipse(150, 550, 20, 20);
+   }
+   text("SHOTS LEFT", 30, 500);
+   textSize(25);
+   
+   if (mouseButton == LEFT) {
+     //ok erin i want to make it so that when yo uleft click the part that says "shots left" will subtract one dot
+   }
+}
+
+void menu() {
+  background(255, 221, 0);
+  if (mouseX > xButt && mouseX < xButt + buttLength &&
+      mouseY > yButt && mouseY < yButt + buttHeight) {
+    fill(211, 118, 224);
+  } else {
+    fill(244, 168, 255);
+  }
+  rect(xButt, yButt, buttLength, buttHeight);
+  fill(0);
+  textSize(50);
+  text("PLAY", xButt + 20, yButt + 50);
+  if (mouseX > xButt && mouseX < xButt + buttLength + 120 && 
+      mouseY > yButt + 100 && mouseY < yButt + 100 + buttHeight) {
+    fill(211, 118, 224);
+  } else {
+    fill(245, 178, 255);
+  }
+  rect(xButt, yButt + 100, buttLength + 120, buttHeight);
+  fill(0);
+  text("CONTROLS", xButt + 10, yButt + 150);
+  text("SHARPSHOOTER", 200, 100);
+  
+  
+}
+
+void mousePressed() {
+  if (screen.equals("MENU")) {            // I made it so that you can only click on the buttons IF you're on the MENU screen
+    if (mouseX > xButt && mouseX < xButt + buttLength &&
+        mouseY > yButt && mouseY < yButt + buttHeight) {
+      screen = "GAMESCREEN";
+    } else if (mouseX > xButt && mouseX < xButt + buttLength + 120 && 
+               mouseY > yButt + 100 && mouseY < yButt + 100 + buttHeight) {
+      screen = "CONTROLS";
+    }
+  } else if (screen.equals("GAMESCREEN")) {   // if you're on the gamescreeen and only the gamescreen...
+    timesClicked += 1;                        // this variable stores how many times the player has clicked --> i put a println in the draw function so you can see how many times you've clicked
+  }
+}
+
+void CONTROLS(){
+  background(0, 255, 255);
+  text("CONTROLS", 100, 50);
+  text("Left click to shoot arrow", 100, 250);
+  text("piece of trash kid haha", 100, 150);
+}
