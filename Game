@@ -67,7 +67,10 @@ void gameScreen() {
  d = dist(x, y, mouseX, mouseY);
  
  if(timesClicked > 2) {
+   background(0);
   text("GAMEOVER", 50, 50);
+  textSize(100);
+  
   //look over here
 }
   
