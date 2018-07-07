@@ -37,15 +37,16 @@ void gameScreen() {
  fill(59, 111, 214);
  ellipse(x, y, targetDiameter, targetDiameter);
  fill(240, 5, 5);
- ellipse(x, y, 50, 50);
+ ellipse(x , y, 50, 50);
  x = x + xSpeed;
- if (x > width || x < 0) {
+ if (x + targetDiameter/2 > width || x - targetDiameter/2 < 0) {
  xSpeed = xSpeed * -1;}
  
  
  y = y + ySpeed;
- if (y > height || y < 0) {
- ySpeed = ySpeed * -1;}
+ if (y + targetDiameter/2 > height || y - targetDiameter/2 < 0) {
+   ySpeed = ySpeed * -1;
+ }
 
  
  noStroke();
@@ -68,7 +69,7 @@ void gameScreen() {
  
  if(timesClicked > 2) {
    background(0);
-  text("GAMEOVER", 50, 50);
+  text("GAMEOVER: why did you lose on such a pathetic game?", 50, 50);
   textSize(100);
   
   //look over here
