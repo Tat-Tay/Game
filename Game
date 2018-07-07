@@ -1,5 +1,6 @@
-int  u, hey, xButt, yButt, buttLength, buttHeight, timesClicked;
+int  u, hey, xButt, yButt, buttLength, buttHeight, timesClicked, score;
 //int y = 200;
+float d, targetDiameter;
 String screen = "MENU";
 float xSpeed = 5;
 float ySpeed = 5;
@@ -14,6 +15,7 @@ void setup() {
   buttLength = width/5;
   buttHeight = height/10;
   timesClicked = 0;
+  targetDiameter = 100;
   
 }
 
@@ -26,13 +28,14 @@ void draw() {
    CONTROLS();
  }
  
- println("Clicked: " + timesClicked);
+ println("Clicked: " + timesClicked + "   d: " + d);
 }
 
 void gameScreen() {
  background (65, 241, 244);
- strokeWeight(100);
- stroke(59, 111, 214);
+ noStroke();
+ fill(59, 111, 214);
+ ellipse(x, y, targetDiameter, targetDiameter);
  fill(240, 5, 5);
  ellipse(x, y, 50, 50);
  x = x + xSpeed;
@@ -44,24 +47,32 @@ void gameScreen() {
  if (y > height || y < 0) {
  ySpeed = ySpeed * -1;}
 
-   
-   noStroke();
-   if (timesClicked < 3) {        // ok so i made it work but the code looks kinda inefficient or bad or something idk hey but at least it works
-   ellipse(50, 550, 20, 20);
-   }                              //ok thanks erin boi
-   if (timesClicked < 2) {
-   ellipse(100, 550, 20, 20);
-   }
-   if (timesClicked < 1) {
-   ellipse(150, 550, 20, 20);
-   }
-   text("SHOTS LEFT", 30, 500);
-   textSize(25);
-   text("SCORE:", 20, 30);
-   // ok erin i want to add a score baord. Please make a variable and all that
-   
-   }
-
+ 
+ noStroke();
+ if (timesClicked < 3) {        // ok so i made it work but the code looks kinda inefficient or bad or something idk hey but at least it works
+ ellipse(50, 550, 20, 20);
+ }                              //ok thanks erin boi
+ if (timesClicked < 2) {
+ ellipse(100, 550, 20, 20);
+ }
+ if (timesClicked < 1) {
+ ellipse(150, 550, 20, 20);
+ }
+ text("SHOTS LEFT", 30, 500);
+ textSize(25);
+ text("SCORE: " + score, 20, 30);
+ // ok erin i want to add a score baord. Please make a variable and all that
+ 
+ // the distance between the mouse and the very centre of the target. i think
+ d = dist(x, y, mouseX, mouseY);
+ 
+ if(timesClicked > 2) {
+  text("GAMEOVER", 50, 50);
+  //look over here
+}
+  
+}
+ 
 
 void menu() {
   background(255, 221, 0);
@@ -99,7 +110,10 @@ void mousePressed() {
       screen = "CONTROLS";
     }
   } else if (screen.equals("GAMESCREEN")) {   // if you're on the gamescreeen and only the gamescreen...
-    timesClicked += 1;                        // this variable stores how many times the player has clicked --> i put a println in the draw function so you can see how many times you've clicked
+    timesClicked += 1;                        // this variable stores how many times the player has clicked --> i put a println in the draw function so you can see how many times you've clicked  
+    if (d <= targetDiameter/2) {
+      score += 5;
+    }
   }
 }
 
