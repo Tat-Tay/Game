@@ -48,7 +48,7 @@ void gameScreen() {
    noStroke();
    if (timesClicked < 3) {        // ok so i made it work but the code looks kinda inefficient or bad or something idk hey but at least it works
    ellipse(50, 550, 20, 20);
-   }
+   }                              //ok thanks erin boi
    if (timesClicked < 2) {
    ellipse(100, 550, 20, 20);
    }
@@ -57,11 +57,11 @@ void gameScreen() {
    }
    text("SHOTS LEFT", 30, 500);
    textSize(25);
+   text("SCORE:", 20, 30);
+   // ok erin i want to add a score baord. Please make a variable and all that
    
-   if (mouseButton == LEFT) {
-     //ok erin i want to make it so that when yo uleft click the part that says "shots left" will subtract one dot
    }
-}
+
 
 void menu() {
   background(255, 221, 0);
@@ -107,5 +107,7 @@ void CONTROLS(){
   background(0, 255, 255);
   text("CONTROLS", 100, 50);
   text("Left click to shoot arrow", 100, 250);
-  text("piece of trash kid haha", 100, 150);
+  textSize(25);
+  text("be careful not to waste your arrows!", 100, 150);
+  textSize(25);
 }
