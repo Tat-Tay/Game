@@ -67,15 +67,22 @@ void gameScreen() {
  // the distance between the mouse and the very centre of the target. i think
  d = dist(x, y, mouseX, mouseY);
  
- if(timesClicked > 2) {
+ if(timesClicked > 2 && score < 15 ) {
    background(0);
   text("GAMEOVER: why did you lose on such a pathetic game?", 50, 50);
   textSize(100);
+ }
+ 
+ if(timesClicked > 2 && score == 15) {
+   background(0);
+  text("NEXT LEVEL", 50, 50);
+  textSize(100);
   
-  //look over here
+ }
+  
 }
   
-}
+
  
 
 void menu() {
